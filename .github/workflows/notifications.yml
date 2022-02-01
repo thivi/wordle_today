@@ -1,0 +1,18 @@
+name: Send Notification
+
+on: 
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+    
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notifcation on issue creation
+        run: |
+          
+        
+    
+
