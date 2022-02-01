@@ -19,7 +19,7 @@ jobs:
                   {
                       "header": {
                           "title": "ISSUE: ${{ github.event.issue.title }}",
-                          "subtitle": "By ${{ github.event.issue.user.login }}",
+                          "subtitle": "By ${{ github.event.issue.user.login }} in Asgardeo SPA SDK",
                           "imageUrl": "https://goo.gl/aeDtrS",
                           "imageStyle": "IMAGE"
                       },
@@ -47,6 +47,7 @@ jobs:
                   }
               ]
           }'
+        if: github.events == "issue"
             
           
         
