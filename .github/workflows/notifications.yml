@@ -11,7 +11,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send notifcation on issue creation
-        run: |
+      - run: |
+          curl --location --request POST ${{secrets.WEBHOOK_CHAT}} \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "cards": [
+                  {
+                      "header": {
+                          "title": "Pizza Bot Customer Support",
+                          "subtitle": "pizzabot@example.com",
+                          "imageUrl": "https://goo.gl/aeDtrS",
+                          "imageStyle": "IMAGE"
+                      },
+                      "sections": {
+                          "widgets": [
+                              {
+                                  "buttons": [
+                                      {
+                                          "textButton": {
+                                              "text": "Open Issue",
+                                              "onClick": {
+                                                  "openLink": {
+                                                      "url": "https://www.google.lk"
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  ],
+                                  "textParagraph": {
+                                      "text": "Issue description"
+                                  }
+                              }
+                          ]
+                      }
+                  }
+              ]
+          }'
+            
           
         
     
