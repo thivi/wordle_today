@@ -18,8 +18,8 @@ jobs:
               "cards": [
                   {
                       "header": {
-                          "title": "Pizza Bot Customer Support",
-                          "subtitle": "pizzabot@example.com",
+                          "title": "${{ github.event.issue.title }}",
+                          "subtitle": "By ${{ github.event.issue.sender.login }}",
                           "imageUrl": "https://goo.gl/aeDtrS",
                           "imageStyle": "IMAGE"
                       },
@@ -32,14 +32,14 @@ jobs:
                                               "text": "Open Issue",
                                               "onClick": {
                                                   "openLink": {
-                                                      "url": "https://www.google.lk"
+                                                      "url": "${{ github.event.issue.url }}"
                                                   }
                                               }
                                           }
                                       }
                                   ],
                                   "textParagraph": {
-                                      "text": "Issue description"
+                                      "text": "${{ github.event.issue.body }}"
                                   }
                               }
                           ]
