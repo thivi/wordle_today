@@ -47,7 +47,7 @@ jobs:
                   }
               ]
           }'
-        if: github.events == "issue"
+        if: github.event == "issue"
             
           
         
