@@ -18,8 +18,8 @@ jobs:
               "cards": [
                   {
                       "header": {
-                          "title": "${{ github.event.issue.title }}",
-                          "subtitle": "By ${{ github.event.issue.sender.login }}",
+                          "title": "ISSUE: ${{ github.event.issue.title }}",
+                          "subtitle": "By ${{ github.event.issue.user.login }}",
                           "imageUrl": "https://goo.gl/aeDtrS",
                           "imageStyle": "IMAGE"
                       },
@@ -32,7 +32,7 @@ jobs:
                                               "text": "Open Issue",
                                               "onClick": {
                                                   "openLink": {
-                                                      "url": "${{ github.event.issue.url }}"
+                                                      "url": "${{ github.event.issue.html_url }}"
                                                   }
                                               }
                                           }
