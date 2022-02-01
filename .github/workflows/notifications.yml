@@ -48,6 +48,45 @@ jobs:
                   }
               ]
           }'
+  
+      - name: Send notifcation on pull request creation
+        if: ${{github.event.pull_request}}
+        run: |
+            curl --location --request POST '${{secrets.WEBHOOK_CHAT}}' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+                "cards": [
+                    {
+                        "header": {
+                            "title": "PR: ${{ github.event.pull_request.title }}",
+                            "subtitle": "By ${{ github.event.pull_request.user.login }} in Asgardeo SPA SDK",
+                            "imageUrl": "https://goo.gl/aeDtrS",
+                            "imageStyle": "IMAGE"
+                        },
+                        "sections": {
+                            "widgets": [
+                                {
+                                    "buttons": [
+                                        {
+                                            "textButton": {
+                                                "text": "Open PR",
+                                                "onClick": {
+                                                    "openLink": {
+                                                        "url": "${{ github.event.pull_request.html_url }}"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "textParagraph": {
+                                        "text": "${{ github.event.pull_request.body }}"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }'
             
           
         
