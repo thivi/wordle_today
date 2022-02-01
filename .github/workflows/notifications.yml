@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send notifcation on issue creation
+        if: ${{github.event.issue}}
         run: |
           curl --location --request POST '${{secrets.WEBHOOK_CHAT}}' \
           --header 'Content-Type: application/json' \
@@ -47,7 +48,6 @@ jobs:
                   }
               ]
           }'
-        if: github.event == "issue"
             
           
         
