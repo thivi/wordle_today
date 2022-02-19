@@ -9,7 +9,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Tweet today's Wordle
+      - name: Checkput Repo
         uses: actions/checkout@v2
+      - name: Tweet today's Wordle
         run: |
             python3 wordle.py "${{secrets.WEBHOOK}}"
