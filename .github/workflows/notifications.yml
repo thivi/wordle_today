@@ -9,7 +9,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
       - name: Tweet today's Wordle
+        uses: actions/checkout@v2
         run: |
             python3 wordle.py "${{secrets.WEBHOOK}}"
