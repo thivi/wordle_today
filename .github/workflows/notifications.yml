@@ -12,4 +12,5 @@ jobs:
       - name: Tweet today's Wordle
         run: |
             pwd
+            ls
             python3 wordle.py "${{secrets.WEBHOOK}}"
