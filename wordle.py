@@ -1,5 +1,5 @@
 # This script outputs the wordle of the day
-from datetime import date
+from datetime import date, timedelta
 import requests
 import sys
 
@@ -9,13 +9,15 @@ start_date = date(2022, 2, 1);
 start_word = "those"
 start_word_index = answers.index(start_word)
 
-today = date.today()
-# Added one since GitHub Actions use teh UTC time zone and the world needs
-# to be found for the earliest timezone, i.e., UTC +14
-days_from_start= abs((start_date - today).days) + 1
+# Added one to today's date since GitHub Actions use the UTC time zone and the wordle needs
+# to be found for the earliest timezone, i.e., UTC +14.
+# A cron job willrun this script at UTC 10:00
+today = date.today() + timedelta(days=1)
+
+days_from_start= abs((start_date - today).days)
 answer = answers[start_word_index + days_from_start]
 output="Today's wordle (" + str(today.strftime("%Y-%m-%d")) + ") is: " + answer
 print(output)
 
-""" requests.get(sys.argv[1
-], params={ "answer": output }) """
+requests.get(sys.argv[1
+], params={ "answer": output })
