@@ -10,5 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Tweet today's Wordle
-        run: pwd
-        run: python3 wordle.py "${{secrets.WEBHOOK}}"
+        run: |
+            pwd
+            python3 wordle.py "${{secrets.WEBHOOK}}"
